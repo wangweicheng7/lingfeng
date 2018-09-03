@@ -85,6 +85,20 @@
 .kind-list-item:first-child {
   margin-top: 0;
 }
+.kind-list-album {
+  padding: 10px;
+  flex: 1;
+  font-size: 14px;
+  color: 0xff0011;
+}
+.kind-list-name {
+  padding: 10px;
+  flex: 1;
+  font-size: 14px;
+  color: 0xff0011;
+}
+
+
 .kind-list-text{
   padding: 10px;
   flex: 1;

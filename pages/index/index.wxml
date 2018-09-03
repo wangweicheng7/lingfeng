@@ -9,8 +9,8 @@
         <view class="kind-list-item">
           <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
             <image class="kind-list-img" src="{{item.Imgpath}}"></image>
-            <view class="kind-list-text">專輯：{{item.Album}}</view>
-            <view class="kind-list-text">名稱：{{item.Name}}</view>
+            <view class="kind-list-album">專輯：{{item.Album}}</view>
+            <view class="kind-list-name">名稱：{{item.Name}}</view>
             <view class="kind-list-text">主講：{{item.Instructor}}</view>
             <view class="kind-list-text">集數：{{item.Episode}}</view>
             

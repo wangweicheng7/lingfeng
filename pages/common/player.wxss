@@ -1,0 +1,9 @@
+.player-hd {
+  padding: 80rpx;
+  text-align: center;
+}
+
+.player-cover {
+  width: 100px;
+  height: 100px;
+}

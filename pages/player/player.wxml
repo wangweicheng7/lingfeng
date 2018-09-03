@@ -1,0 +1,7 @@
+<!--player.wxml-->
+<text>player.wxml</text>
+<view class='player-hd'>
+<!-- <block wx:for-items="{{list}}" wx:key="{{item.id}}"> -->
+  <image class='player-cover' src='{{Imgpath}}'></image>
+<!-- </block> -->
+</view>
