@@ -1,23 +1,17 @@
-<view class="index">
-  <view class="index-hd">
-    <image class="index-logo" src="../../image/icon64_appwx_logo.png"></image>
-    <view class="index-desc">灵峰讲堂试运行</view>
-  </view>
-  <view class="index-bd">
-    <view class="kind-list">
-      <block wx:for-items="{{list}}" wx:key="{{item.id}}">
-        <view class="kind-list-item">
-          <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
-            <image class="kind-list-img" src="{{item.Imgpath}}"></image>
-            <view class="kind-list-album">專輯：{{item.Album}}</view>
-            <view class="kind-list-name">名稱：{{item.Name}}</view>
-            <view class="kind-list-text">主講：{{item.Instructor}}</view>
-            <view class="kind-list-text">集數：{{item.Episode}}</view>
-            
-          </view>
-          
-        </view>
-      </block>
+<view class='contain'>
+  <!-- <view>
+    <button type='primary' bindtap='loadData'>加载数据</button>
+  </view> -->
+  <loading hidden="{{hidden}}" bindchange="loadingChange">
+    加载中...
+  </loading>
+  <view class="scroll-view-item" wx:for="{{newsData}}" data-id="{{item.id}}">
+    <image class="item-img" src="{{item.Imgpath}}"></image>
+    <view class="detail">
+      <text class="item-name">{{item.Album}}</text>
+      <view class="tips">
+          <text class="item-info">{{item.Instructor}}</text>
+      </view>
     </view>
   </view>
 </view>

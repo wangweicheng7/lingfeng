@@ -22,6 +22,19 @@ Page({
     Status: ""
   },
 
+  audioPlay: function () {
+    this.audioCtx.play()
+  },
+  audioPause: function () {
+    this.audioCtx.pause()
+  },
+  audio14: function () {
+    this.audioCtx.seek(14)
+  },
+  audioStart: function () {
+    this.audioCtx.seek(0)
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -33,7 +46,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    this.audioCtx = wx.createAudioContext('myAudio')
   },
 
   /**
