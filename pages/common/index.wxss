@@ -86,11 +86,12 @@
   margin-top: 0;
 }
 .kind-list-text{
+  padding: 10px;
   flex: 1;
 }
 .kind-list-img {
-  width: 60rpx;
-  height: 60rpx;
+  width: 120rpx;
+  height: 120rpx;
 }
 .kind-list-item-hd {
   padding: 30rpx;
