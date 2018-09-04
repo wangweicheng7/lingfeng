@@ -1,31 +1,19 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/user/user",
-    "pages/player/player"
+    "pages/player/player",
+    "pages/instructor/instructor"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#31c27c",
+    "navigationBarTitleText": "靈峰講堂",
+    "navigationBarTextStyle": "#fff",
+    "enablePullDownRefresh": false
   },
-  "tabBar": {
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "專輯"
-      },
-      {
-        "pagePath": "pages/user/user",
-        "text": "我的"
-      },
-      {
-        "pagePath": "pages/user/user",
-        "text": "播放器"
-      }
-    ]
-  },
+  "requiredBackgroundModes": [
+    "audio"
+  ],
   "networkTimeout": {
     "request": 10000,
     "downloadFile": 10000

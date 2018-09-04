@@ -24,7 +24,16 @@ App({
       })
     }
   },
+
+  setGlobalData: function(obj) {
+    for (let key in obj) {
+      this.globalData[key] = obj[key]
+    }
+  },
+
   globalData:{
-    userInfo:null
+    userInfo:null,
+    audioData: null,
+    currentAudioList: null,
   }
 })

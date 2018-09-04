@@ -1,0 +1,29 @@
+
+<template name="playerFoot">
+  <navigator class="player" openType="switchTab" url="/pages/player/player" hover-class="none">
+    <view class="audio-info">
+			<!-- <image class="img" src="{{Imgpath}}"></image> -->
+			<view class="info">
+
+        <image class="img" src="{{audioData.Imgpath}}"></image>
+			<!-- <view class="info">
+				<text class="song-name">{{playingSong.songname}}</text>
+				<view class="singer-name">
+					<text wx:for="{{playingSong.singer}}" wx:key="unique">{{item.name}}</text>
+				</view>
+			</view>
+			<view class="play {{isPlaying ? '' : 'pause'}}" bindtap="songToggle"></view>
+
+				<text class="album-name">{{Album}}</text>
+        <text class="audio-name">{{Name}}</text>
+				<view class="singer-name">
+					<text>{{Instructor}}</text>
+				</view> -->
+        <view class="audio-control">
+<view class="play" bindtap="songToggle"></view>
+</view>
+			</view>
+		</view>   
+  </navigator>
+
+</template>

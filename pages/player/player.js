@@ -1,87 +1,118 @@
 // player.js
+var util = require('../../utils/util.js')
+var app = getApp()
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    Album: "夜聽佛陀故事",
-    Name: "一切施王",
-    Episode: "1",
-    Instructor: "靜瑜老師",
-    Time: "",
-    Serialnumber: "D18-005-001",
-    Type: "audio",
-    Position: "",
-    Filepath: "http://www.pan.cjnflf.com/%E9%9F%B3%E9%A2%91/%E9%9D%99%E7%91%9C%E8%80%81%E5%B8%88/%E5%A4%9C%E8%81%BD%E4%BD%9B%E9%99%80%E6%95%85%E4%BA%8B/%E4%B8%80%E5%88%87%E6%96%BD%E7%8E%8B.mp3",
-    Imgpath: "http://www.pan.cjnflf.com/%E9%9F%B3%E9%A2%91/%E9%9D%99%E7%91%9C%E8%80%81%E5%B8%88/%E5%A4%9C%E8%81%BD%E4%BD%9B%E9%99%80%E6%95%85%E4%BA%8B/%E6%89%8B%E4%B8%AD%E7%94%9F%E9%87%91.jpg",
-    Duration: "12:33",
-    Link: "",
-    Description: "夜聽佛陀故事",
-    InfoID: "03d0b02e-8325-11e8-9178-00163e045e63",
-    Status: ""
-  },
-
-  audioPlay: function () {
-    this.audioCtx.play()
-  },
-  audioPause: function () {
-    this.audioCtx.pause()
-  },
-  audio14: function () {
-    this.audioCtx.seek(14)
-  },
-  audioStart: function () {
-    this.audioCtx.seek(0)
+    Album: '',
+    Name: '',
+    Episode: '',
+    Instructor: '',
+    Time: '',
+    Serialnumber: '',
+    Type: '',
+    Position: '',
+    Filepath: '',
+    Imgpath: '',
+    Duration: '',
+    Link: '',
+    Description: '',
+    InfoID: '',
+    Status: '',
+    State: {
+      Progress: 0.5,
+      CurrentPosition: '1200',
+      Duration: '2600'
+    },
+    Playing: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log('player onLoad');
+    let that = this;
+    let data = app.globalData.audioData;
+    console.log(data);
+    this.setData(data);
+
+    wx.playBackgroundAudio({
+      dataUrl: that.data.Filepath,
+      title: that.data.Album + ' - ' + that.data.Name,
+      coverImgUrl: that.data.Imgpath,
+      success: function (res) {
+        console.log('加载完成，开始播放');
+      }
+    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.audioCtx = wx.createAudioContext('myAudio')
+    console.log('player onReady');
+    let that = this;
+    that.audioPlay();
+
+    wx.onBackgroundAudioPlay(function(){
+      console.log('开始播放');
+      that.audioPlay();
+    });
+
+    // this.audioCtx = wx.createAudioContext('myAudio')
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  audioPlay: function() {
+    let that = this;
+    let inv = setInterval(function(){
+      wx.getBackgroundAudioPlayerState({
+        success: function(res) {
+          console.log('audioPlay');
+          console.log(res)
+          if(res.status == 1 ){
+            console.log('player start');
+            that.setData({
+              Playing: true,
+              State: {
+                Progress: res.currentPosition/res.duration * 100,
+                CurrentPosition: that.timeToString(res.currentPosition),
+                Duration: that.timeToString(res.duration)
+              }
+            });
+          }else{
+            that.setData({
+              Playing: false,
+            });
+            clearInterval(inv)
+          }
+        }
+      })
+    }, 100);
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  timeToString: function(duration) {
+    let str = ''
+    let hour = parseInt(duration/3600);
+    duration = duration%3600;
+    let minute = parseInt(duration/60) < 10 ? ('0' + parseInt(duration/60)): (parseInt(duration/60));
+    let second = duration%60 < 10 ? ('0' + duration%60) : (duration%60);
+    str = hour + ':' + minute + ':' + second;
+    return str;
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
+  audioToggle: function() {
+    let that = this;
+    if(that.data.Playing) {
+      wx.pauseBackgroundAudio();
+    }else{
+      wx.playBackgroundAudio({
+        title: that.data.Album,
+        coverImgUrl: that.data.Imgpath,
+        dataUrl: that.data.Filepath
+      })
+    }
+    that.audioPlay()
   },
 
   /**

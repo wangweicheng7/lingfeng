@@ -1,4 +1,6 @@
  @import "../common/index.wxss"; 
+ @import "../common/lib/weui.wxss";
+ @import "../player/player.wxss";
 .scroll-view-item {
   padding: 1rem 10px;
   display: flex;

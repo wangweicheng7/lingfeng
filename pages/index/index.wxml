@@ -1,11 +1,12 @@
+
+
 <view class='contain'>
-  <!-- <view>
-    <button type='primary' bindtap='loadData'>加载数据</button>
-  </view> -->
-  <loading hidden="{{hidden}}" bindchange="loadingChange">
+
+
+  <!-- <loading hidden="{{hidden}}" bindchange="loadingChange">
     加载中...
-  </loading>
-  <view class="scroll-view-item" wx:for="{{newsData}}" data-id="{{item.id}}">
+  </loading> -->
+  <view class="scroll-view-item" wx:for="{{list}}" data-id="{{item.id}}" bindtap='itemTapped' data-data='{{item}}'>
     <image class="item-img" src="{{item.Imgpath}}"></image>
     <view class="detail">
       <text class="item-name">{{item.Album}}</text>
@@ -14,4 +15,9 @@
       </view>
     </view>
   </view>
+  <!-- <view>{{audioData}}</view>
+  <import src ="../common/playerFoot.wxml"/>
+  <template is="playerFoot"/> -->
 </view>
+
+
