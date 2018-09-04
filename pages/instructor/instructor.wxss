@@ -1,44 +1,52 @@
 /* instructor.wxss */
+ 
+ .content {
+  font-size: 16px;
+  line-height: 1.2em;
+}
+
+.big-img {
+  display: block;
+  margin: 1px auto;
+}
+
+.instructor {
+  height: 1.25rem;
+  display: flex;
+  padding: 10px;
+  font-size: 0.75rem;
+  border-bottom: 1px solid #e6e8eb;
+}
+ 
  .scroll-view-item {
-  padding: 1rem 10px;
+  padding: 0.75rem 10px;
   display: flex;
   border-bottom: 1px solid #e6e8eb;
 }
-.item-img {
-  height: 4rem;
-  flex: 1;
-  display: block;
-}
 .detail {
-  height: 4rem;
+  height: 1rem;
   line-height: 1.25em;
   flex: 2;
-  padding: 0 10px;
+  padding: 0px;
   position: relative;
 }
-.item-album{
-  font-size: .75rem;
-  overflow: hidden;
-  height: 2.5rem;
-  display: relative;
-}
+
 .item-name {
-  font-size: .75rem;
+  font-size: 0.75rem;
   overflow: hidden;
-  height: 2.5rem;
-  display: block;
-}
-.tips {
-  font-size: .65rem;
-  position: absolute;
-  bottom: 0;
+  height: 1rem;
   color: #828a92;
-  display: flex;
-}
-.item-info {
+  display: block;
   float: left;
   flex: 3;
   text-overflow: ellipsis;
+}
+
+.item-duratione {
+  float: right;
+  flex: 1;
   overflow: hidden;
   height: 1rem;
+  font-size: 12px;
+  color: #ccc;
 }

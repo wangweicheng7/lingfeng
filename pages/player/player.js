@@ -34,17 +34,7 @@ Page({
     console.log('player onLoad');
     let that = this;
     let data = app.globalData.audioData;
-    console.log(data);
     this.setData(data);
-
-    wx.playBackgroundAudio({
-      dataUrl: that.data.Filepath,
-      title: that.data.Album + ' - ' + that.data.Name,
-      coverImgUrl: that.data.Imgpath,
-      success: function (res) {
-        console.log('加载完成，开始播放');
-      }
-    });
   },
 
   /**
@@ -53,14 +43,7 @@ Page({
   onReady: function () {
     console.log('player onReady');
     let that = this;
-    that.audioPlay();
-
-    wx.onBackgroundAudioPlay(function(){
-      console.log('开始播放');
-      that.audioPlay();
-    });
-
-    // this.audioCtx = wx.createAudioContext('myAudio')
+    that.audioToggle();
   },
 
   audioPlay: function() {
@@ -96,8 +79,9 @@ Page({
     let hour = parseInt(duration/3600);
     duration = duration%3600;
     let minute = parseInt(duration/60) < 10 ? ('0' + parseInt(duration/60)): (parseInt(duration/60));
-    let second = duration%60 < 10 ? ('0' + duration%60) : (duration%60);
+    let second = duration % 60 < 10 ? ('0' + parseInt(duration % 60)) : (parseInt(duration%60));
     str = hour + ':' + minute + ':' + second;
+    console.log(str)
     return str;
   },
 

@@ -1,19 +1,16 @@
 <!--instructor.wxml-->
 <view class='contain'>
-  <!-- <view>
-    <button type='primary' bindtap='loadData'>加载数据</button>
-  </view> -->
   <loading hidden="{{hidden}}" bindchange="loadingChange">
     加载中...
   </loading>
-  <view class="scroll-view-item" wx:for="{{newsData}}" data-id="{{item.id}}">
-    <image class="item-img" src="{{item.Imgpath}}"></image>
+  <view class="content">
+    <image class="big-img" src="{{bigImg}}"></image>
+    <text class="instructor">{{instructor}}</text>
+  </view>
+  <view class="scroll-view-item" wx:for="{{newsData}}" data-id="{{item.id}}" data-data="{{item}}" bindtap='bindItemTap'>
     <view class="detail">
-      <text class="item-album">{{item.Album}}</text>
-      <text class="item-name">{{item.Name}} </text>
-      <view class="tips">
-          <text class="item-info">{{item.Instructor}}</text>
-      </view>
+      <text class="item-name">{{item.Episode}} {{item.Name}} </text>
+      <text class="item-duratione">{{item.Duration}}</text>
     </view>
   </view>
 </view>

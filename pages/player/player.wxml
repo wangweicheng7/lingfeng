@@ -15,13 +15,14 @@
 			<image class="img {{Playing ? '' : 'pause'}}" src="{{Imgpath}}"></image>
 		</view>
 		<view class="audio-control">
-      <view class="play {{Playing ? '' : 'pause'}}" bindtap="audioToggle"></view>
+
 			<view class="progress">
-				<text class="time-start">{{State.CurrentPosition}}</text>
+				<text class="time-start">{{State.CurrentPosition}}/{{State.Duration}}</text>
 				<view class="time-bar">
 					<view class="time-play" style="transform: translateX({{State.Progress}}%)"></view>
 				</view>
-				<text class="time-total">{{State.Duration}}</text>
+        <view class="play {{Playing ? '' : 'pause'}}" bindtap="audioToggle"></view>
+				<!-- <text class="time-total">{{State.CurrentPosition}}/{{State.Duration}}</text> -->
 			</view>
 		</view>
 	</view>

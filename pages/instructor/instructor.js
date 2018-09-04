@@ -2,34 +2,34 @@
 var app = getApp()
 Page({
   data: {
+    bigImg:'',
+    album:'',
+    instructor:'',
     list: [],
     hidden: true
   },
   loading: false,
-  kindToggle: function (e) {
-    var id = e.currentTarget.id, list = this.data.list;
-    for (var i = 0, len = list.length; i < len; ++i) {
-      if (list[i].id == id) {
-        list[i].open = !list[i].open
-      } else {
-        list[i].open = false
-      }
-    }
-    this.setData({
-      list: list
-    });
-  },
+  
   onLoad: function (option) {
+    this.setData({
+      album: option.Album
+    });
     this.loadData(option.Album)
   },
 
-  loadData: function (name) {
+  onReady: function (option) { // 设置title
     var that = this;
+    wx.setNavigationBarTitle({
+      title: that.data.album
+    })
+  },
+
+
+  loadData: function (name) {
     var that = this;
     this.setData({
       hidden: false
     });
-    
     var url = 'https://www.cjnflf.com/album?name=' + encodeURIComponent(name) + '&type=audio';
     wx.request({
       url: url,
@@ -40,6 +40,9 @@ Page({
         console.log(res.data)
         that.setData({
           newsData: res.data,
+          bigImg: res.data[0].Imgpath,
+          album: res.data[0].Album,
+          instructor: res.data[0].Instructor,
           hidden: true
         });
       }
@@ -47,12 +50,12 @@ Page({
   },
   //点击事件
   bindItemTap: function (event) {
-    var name = event.currentTarget.dataset.data.Album; // 当前id
-    console.log(name);
+    var data = event.currentTarget.dataset.data; // 当前id
+    console.log(data);
     // 设置到全局变量中去，让下个页面可以访问
-    app.globalData.Album = name;
+    app.globalData.audioData = data;
     wx.navigateTo({
-      url: '../instructor/instructor'
+      url: '../player/player'
     });
   }
 })
