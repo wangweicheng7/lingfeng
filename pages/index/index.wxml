@@ -6,7 +6,7 @@
   <!-- <loading hidden="{{hidden}}" bindchange="loadingChange">
     加载中...
   </loading> -->
-  <view class="scroll-view-item" wx:for="{{list}}" data-id="{{item.id}}" bindtap='itemTapped' data-data='{{item}}'>
+  <view class="scroll-view-item" wx:for="{{list}}" data-id="{{item.id}}" bindtap='bindItemTap' data-data='{{item}}'>
     <image class="item-img" src="{{item.Imgpath}}"></image>
     <view class="detail">
       <text class="item-name">{{item.Album}}</text>

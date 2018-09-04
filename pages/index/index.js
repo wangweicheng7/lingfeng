@@ -35,14 +35,12 @@ Page({
     })
   },
   
-  itemTapped: function(e) {
-    console.log(e.currentTarget.dataset)
-    app.setGlobalData({
-      audioData: e.currentTarget.dataset.data
-    });
+  //点击事件
+  bindItemTap: function (event) {
+    var name = event.currentTarget.dataset.data.Album; // 当前id
     wx.navigateTo({
-      url: '../player/player',
-    })
+      url: '../instructor/instructor?Album='+name
+    });
   }
 })
 
