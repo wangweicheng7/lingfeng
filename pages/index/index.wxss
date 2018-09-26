@@ -7,7 +7,8 @@
   border-bottom: 1px solid #e6e8eb;
 }
 .item-img {
-  height: 4rem;
+  width: auto;
+  height: auto;
   flex: 1;
   display: block;
 }
@@ -26,13 +27,13 @@
 }
 .tips {
   font-size: .65rem;
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   color: #828a92;
   display: flex;
 }
 .item-info {
-  float: left;
+  /* float: left; */
   flex: 3;
   text-overflow: ellipsis;
   overflow: hidden;

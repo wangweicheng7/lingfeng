@@ -7,11 +7,17 @@
     加载中...
   </loading> -->
   <view class="scroll-view-item" wx:for="{{list}}" data-id="{{item.id}}" bindtap='bindItemTap' data-data='{{item}}'>
-    <image class="item-img" src="{{item.Imgpath}}"></image>
+    <image class="item-img" src="{{item.Imgpath}}" mode='widthFix'></image>
     <view class="detail">
-      <text class="item-name">{{item.Album}}</text>
+      <text class="item-name">專輯：{{item.Album}}</text>
       <view class="tips">
-          <text class="item-info">{{item.Instructor}}</text>
+        <text class="item-info">主講：{{item.Instructor}}</text>
+      </view>
+      <view class="tips">
+        <text class='item-info'>當前：{{item.Count}}集</text>
+      </view>
+      <view class="tips">
+        <text class='item-info'>狀態：{{item.Status == 'done' ? '完結': '更新中'}}</text>
       </view>
     </view>
   </view>
